@@ -1,0 +1,73 @@
+<div class="flex items-center justify-between bg-white p-4 shadow-md rounded-lg mx-2 sm:mx-4 mt-4 top-0 z-10">
+    <div class="flex items-center">
+        <button id="sidebarCollapseBtn" class="text-gray-500 hover:text-gray-600 flex flex-col gap-1 p-1">
+            <div class="w-5 h-0.5 bg-gray-600"></div>
+            <div class="w-3.5 h-0.5 bg-gray-600/70"></div>
+            <div class="w-2.5 h-0.5 bg-gray-600/50"></div>
+        </button>
+    </div>
+
+    <div class="absolute left-1/2 transform -translate-x-1/2 flex items-center">
+        <div class="relative mr-2 hidden sm:block">
+            <i class="fas fa-cloud text-[#20B2AA] text-xl"></i>
+            <i class="fas fa-sun text-[#20B2AA] text-2xl absolute" style="top: -10px; left: -10px;"></i>
+        </div>
+        <h1 class="text-lg sm:text-2xl font-bold">
+            <span class="text-[#40E0D0]">Greenhouse</span>
+            <span class="text-[#20B2AA]">Monitoring</span>
+        </h1>
+    </div>
+
+    <div class="flex items-center">
+        <button id="themeToggleBtn" class="text-gray-500 hover:text-gray-600 mr-2 sm:mr-4">
+            <i class="far fa-moon text-xl sm:text-2xl" style="color: gray;"></i>
+        </button>
+        <div class="flex items-center relative">
+            <div class="relative">
+                <img alt="Administrator profile picture" class="rounded-full w-8 h-8 sm:w-10 sm:h-10" src="assets/image/lutfi.jpg"/>
+                <span class="absolute bottom-0 right-0 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-teal-500 border-2 border-white rounded-full"></span>
+            </div>
+            <div class="ml-2 hidden sm:block">
+                <p class="text-gray-700">Administrator</p>
+                <p class="text-gray-500 text-sm">admin</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-white p-3 sm:p-4 shadow-md text-center text-gray-500 mt-2 sm:mt-4 mx-2 sm:mx-4 rounded-lg">
+    <span id="currentTime" class="text-sm sm:text-base">Last update: </span>
+</div>
+
+<script>
+    function updateTime() {
+        const now = new Date();
+        const formattedTime = now.toLocaleString('id-ID', {
+            timeZone: 'Asia/Jakarta',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        document.getElementById('currentTime').textContent = `Last update: ${formattedTime} WIB`;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000); // Update setiap detik
+
+    document.getElementById('sidebarCollapseBtn').addEventListener('click', function() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        
+        if (sidebar.classList.contains('-translate-x-full')) {
+            // Buka sidebar
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        } else {
+            // Tutup sidebar
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        }
+    });
+</script> 
