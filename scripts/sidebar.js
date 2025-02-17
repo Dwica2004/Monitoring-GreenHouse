@@ -48,10 +48,6 @@ if (window.innerWidth <= 768) {
     isSidebarOpen = false;
 }
 
-themeToggleBtn.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-});
-
 function updateTime() {
     const now = new Date();
     const formattedTime = now.toLocaleString('id-ID', {
@@ -81,4 +77,73 @@ document.addEventListener('click', (e) => {
             overlay.classList.add('hidden');
         }
     }
+});
+
+// Theme toggle functionality
+function updateTheme(isDark) {
+    if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.body.classList.add('dark');
+        document.body.style.backgroundColor = '#111827';
+        
+        // Update card backgrounds
+        document.querySelectorAll('.bg-white, .bg-gray-100').forEach(el => {
+            el.classList.add('bg-gray-800');
+            el.classList.remove('bg-white', 'bg-gray-100');
+        });
+        
+        // Update text colors
+        document.querySelectorAll('.text-gray-500, .text-gray-600, .text-gray-700').forEach(el => {
+            el.classList.add('text-gray-400');
+            el.classList.remove('text-gray-500', 'text-gray-600', 'text-gray-700');
+        });
+
+        // Update container backgrounds
+        document.querySelectorAll('.dark\\:bg-gray-800').forEach(el => {
+            el.classList.add('bg-gray-800');
+        });
+    } else {
+        document.documentElement.classList.remove('dark');
+        document.body.classList.remove('dark');
+        document.body.style.backgroundColor = '#F9FAFB';
+        
+        // Update card backgrounds
+        document.querySelectorAll('.bg-gray-800').forEach(el => {
+            el.classList.remove('bg-gray-800');
+            el.classList.add('bg-white');
+        });
+        
+        // Update text colors
+        document.querySelectorAll('.text-gray-400').forEach(el => {
+            el.classList.remove('text-gray-400');
+            el.classList.add('text-gray-700');
+        });
+
+        // Update container backgrounds
+        document.querySelectorAll('.dark\\:bg-gray-800').forEach(el => {
+            el.classList.remove('bg-gray-800');
+        });
+
+        // Reset semua background ke putih
+        document.querySelectorAll('.bg-gray-800, .dark\\:bg-gray-800').forEach(el => {
+            el.style.backgroundColor = '#ffffff';
+        });
+    }
+
+    // Update charts background
+    const charts = document.querySelectorAll('canvas');
+    charts.forEach(chart => {
+        chart.style.backgroundColor = isDark ? '#1F2937' : '#ffffff';
+    });
+}
+
+// Initialize theme on load
+const isDarkMode = localStorage.getItem('theme') === 'dark';
+updateTheme(isDarkMode);
+
+// Add event listener for theme toggle
+document.getElementById('themeToggleBtn')?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    updateTheme(!isDark);
 });

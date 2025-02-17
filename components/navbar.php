@@ -19,12 +19,22 @@
     </div>
 
     <div class="flex items-center">
-        <button id="themeToggleBtn" class="text-gray-500 hover:text-gray-600 mr-2 sm:mr-4">
-            <i class="far fa-moon text-xl sm:text-2xl" style="color: gray;"></i>
+        <button id="themeToggleBtn" class="text-gray-500 hover:text-gray-600 mr-2 sm:mr-4 p-2 rounded-full transition-colors duration-300">
+            <i class="far fa-sun text-xl sm:text-2xl hidden" id="sunIcon"></i>
+            <i class="far fa-moon text-xl sm:text-2xl" id="moonIcon"></i>
         </button>
         <div class="flex items-center relative">
             <div class="relative">
-                <img alt="Administrator profile picture" class="rounded-full w-8 h-8 sm:w-10 sm:h-10" src="assets/image/lutfi.jpg"/>
+                <?php
+                // Menentukan path gambar berdasarkan lokasi file
+                $currentFile = basename($_SERVER['PHP_SELF']);
+                $imagePath = (strpos($currentFile, 'node') !== false) 
+                    ? '../assets/image/lutfi.jpg'  // Untuk file di folder pages
+                    : 'assets/image/lutfi.jpg';    // Untuk file di root
+                ?>
+                <img alt="Administrator profile picture" 
+                     class="rounded-full w-8 h-8 sm:w-10 sm:h-10" 
+                     src="<?php echo $imagePath; ?>"/>
                 <span class="absolute bottom-0 right-0 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-teal-500 border-2 border-white rounded-full"></span>
             </div>
             <div class="ml-2 hidden sm:block">
@@ -70,4 +80,94 @@
             overlay.classList.add('hidden');
         }
     });
+
+    // Fungsi untuk toggle tema
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const body = document.body;
+    const cards = document.querySelectorAll('.bg-white');
+    const texts = document.querySelectorAll('.text-gray-500, .text-gray-700');
+
+    let isDark = localStorage.getItem('theme') === 'dark';
+    if (isDark) {
+        document.documentElement.classList.add('dark');
+        enableDarkMode(); // Tambahkan ini untuk mengaktifkan dark mode saat halaman dimuat
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        isDark = !isDark;
+        if (isDark) {
+            document.documentElement.classList.add('dark');
+            enableDarkMode(); // Tambahkan ini untuk mengaktifkan dark mode saat tombol ditekan
+        } else {
+            document.documentElement.classList.remove('dark');
+            disableDarkMode(); // Tambahkan ini untuk menonaktifkan dark mode saat tombol ditekan
+        }
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    function enableDarkMode() {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+        body.classList.add('bg-gray-900');
+        body.classList.remove('bg-gray-100');
+        
+        // Ubah warna card dan sidebar
+        document.querySelectorAll('.bg-white, #sidebar').forEach(element => {
+            element.classList.remove('bg-white');
+            element.classList.add('bg-gray-800');
+        });
+
+        // Ubah warna teks
+        document.querySelectorAll('.text-gray-500, .text-gray-700, .text-gray-600').forEach(text => {
+            if (text.classList.contains('text-gray-500')) {
+                text.classList.remove('text-gray-500');
+                text.classList.add('text-gray-400');
+            }
+            if (text.classList.contains('text-gray-700')) {
+                text.classList.remove('text-gray-700');
+                text.classList.add('text-gray-300');
+            }
+            if (text.classList.contains('text-gray-600')) {
+                text.classList.remove('text-gray-600');
+                text.classList.add('text-gray-400');
+            }
+        });
+
+        // Ubah warna border dan shadow
+        document.querySelectorAll('.shadow-md, .shadow-sm').forEach(element => {
+            element.classList.add('border', 'border-gray-700');
+        });
+    }
+
+    function disableDarkMode() {
+        moonIcon.classList.remove('hidden');
+        sunIcon.classList.add('hidden');
+        body.classList.remove('bg-gray-900');
+        body.classList.add('bg-gray-100');
+        
+        // Kembalikan warna card dan sidebar
+        document.querySelectorAll('.bg-gray-800, #sidebar').forEach(element => {
+            element.classList.add('bg-white');
+            element.classList.remove('bg-gray-800');
+        });
+
+        // Kembalikan warna teks
+        document.querySelectorAll('.text-gray-400, .text-gray-300').forEach(text => {
+            if (text.classList.contains('text-gray-400')) {
+                text.classList.add('text-gray-500');
+                text.classList.remove('text-gray-400');
+            }
+            if (text.classList.contains('text-gray-300')) {
+                text.classList.add('text-gray-700');
+                text.classList.remove('text-gray-300');
+            }
+        });
+
+        // Kembalikan warna border dan shadow
+        document.querySelectorAll('.shadow-md, .shadow-sm').forEach(element => {
+            element.classList.remove('border', 'border-gray-700');
+        });
+    }
 </script> 

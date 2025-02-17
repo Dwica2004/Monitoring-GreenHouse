@@ -8,9 +8,14 @@
     <link href="../styles/sidebar.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="styles/sidebar.css" rel="stylesheet"/>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
 </head>
-<body class="bg-gray-100 font-sans">
-    <div class="flex min-h-screen bg-gray-100">
+<body class="bg-gray-100 dark:bg-gray-900 font-sans">
+    <div class="flex min-h-screen bg-gray-100 dark:bg-gray-900">
         <!-- Sidebar -->
         <div class="flex-none">
             <?php include '../components/sidebar.php'; ?>
@@ -150,7 +155,28 @@
                 y: {
                     beginAtZero: true,
                     min: 0,
-                    max: 100 // Untuk suhu, kelembapan, dan kelembapan tanah
+                    max: 100,
+                    grid: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#374151' : '#E5E7EB'
+                    },
+                    ticks: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#9CA3AF' : '#4B5563'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#374151' : '#E5E7EB'
+                    },
+                    ticks: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#9CA3AF' : '#4B5563'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#9CA3AF' : '#4B5563'
+                    }
                 }
             }
         };
@@ -197,17 +223,7 @@
                     tension: 0.1
                 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        min: 1000,
-                        max: 10000 // Untuk cahaya
-                    }
-                }
-            }
+            options: commonOptions
         });
 
         // Soil Moisture Chart
@@ -226,6 +242,8 @@
         });
     </script>
     <script src="scripts/sidebar.js"></script>
-
+    <div id="floatingSettings" class="fixed bottom-4 right-4 bg-blue-500 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg cursor-pointer">
+        <i class="fas fa-cog"></i>
+    </div>
 </body>
 </html> 

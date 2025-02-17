@@ -1,5 +1,5 @@
-<div id="sidebar" class="fixed lg:static w-64 bg-gray-100 transition-all duration-300 ease-in-out h-full transform -translate-x-full lg:translate-x-0 z-50">
-    <div class="m-3 bg-white rounded-2xl shadow-md flex flex-col h-full">
+<div id="sidebar" class="fixed lg:static w-64 bg-white dark:bg-gray-800 transition-all duration-300 ease-in-out h-full transform -translate-x-full lg:translate-x-0 z-50">
+    <div class="m-3 bg-white dark:bg-gray-800 rounded-xl shadow flex flex-col h-full border border-white dark:border-white">
         <div class="p-4 flex items-center">
             <div class="relative">
                 <i class="fas fa-cloud text-teal-600 text-xl"></i>
@@ -74,8 +74,17 @@
         <div class="p-4 border-t">
             <div class="flex items-center p-3 rounded-lg hover:bg-teal-50 transition-colors cursor-pointer">
                 <div class="relative">
-                        <img alt="Administrator profile picture" class="rounded-full w-10 h-10" src="assets/image/lutfi.jpg"/>
-                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-teal-500 border-2 border-white rounded-full"></span>
+                    <?php
+                    // Menentukan path gambar berdasarkan lokasi file
+                    $currentFile = basename($_SERVER['PHP_SELF']);
+                    $imagePath = (strpos($currentFile, 'node') !== false) 
+                        ? '../assets/image/lutfi.jpg'  // Untuk file di folder pages
+                        : 'assets/image/lutfi.jpg';    // Untuk file di root
+                    ?>
+                    <img alt="Administrator profile picture" 
+                         class="rounded-full w-10 h-10" 
+                         src="<?php echo $imagePath; ?>"/>
+                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-teal-500 border-2 border-white rounded-full"></span>
                 </div>
                 <div class="ml-3 flex-grow">
                     <p class="text-sm text-gray-900">Administrator</p>

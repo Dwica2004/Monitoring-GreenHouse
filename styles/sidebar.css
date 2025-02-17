@@ -106,7 +106,7 @@
 }
 
 .dark {
-    --bg-color: #1a202c;
+    --bg-color: #111827;
     --text-color: #ffffff;
 }
 
@@ -239,51 +239,175 @@ body {
 
 /* Dark mode styles */
 .dark {
-    background-color: #1a202c;
+    background-color: #111827;
     color: #ffffff;
 }
 
 .dark .bg-white {
-    background-color: #2d3748 !important;
-    color: #ffffff;
+    background-color: #1F2937;
 }
 
 .dark .text-gray-500 {
-    color: #a0aec0;
+    color: #9CA3AF;
 }
 
 .dark .text-gray-700 {
-    color: #e2e8f0;
+    color: #D1D5DB;
 }
 
-.dark .shadow-md {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+.dark .text-gray-900 {
+    color: #F3F4F6;
 }
 
-.dark .bg-gray-100 {
-    background-color: #1a202c;
+.dark .border-gray-100 {
+    border-color: #374151;
+}
+
+.dark .border-gray-700 {
+    border-color: #374151;
 }
 
 .dark .hover\:bg-teal-50:hover {
     background-color: rgba(56, 178, 172, 0.1);
 }
 
-.dark .border-t {
-    border-color: #4a5568;
+/* Light mode styles - update dan tambahan */
+.bg-white {
+    background-color: #ffffff !important;
 }
 
+.bg-gray-100 {
+    background-color: #F9FAFB !important;
+}
+
+/* Card styles untuk light mode */
+.shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+}
+
+/* Sidebar untuk light mode */
+#sidebar {
+    background-color: #ffffff;
+}
+
+.sidebar .m-3 {
+    background-color: #ffffff;
+    border-color: #F3F4F6;
+}
+
+/* Chart background untuk light mode */
+canvas {
+    background-color: #ffffff;
+}
+
+/* Text colors untuk light mode */
+.text-gray-400,
+.text-gray-500,
+.text-gray-600,
+.text-gray-700 {
+    color: #374151;
+}
+
+/* Hover states untuk light mode */
+.hover\:bg-teal-50:hover {
+    background-color: #F0FDFA;
+}
+
+/* Container styles untuk light mode */
+.bg-gray-100 {
+    background-color: #F9FAFB;
+}
+
+/* Override dark mode styles ketika dalam mode terang */
+:root:not(.dark) .bg-gray-800 {
+    background-color: #ffffff;
+}
+
+:root:not(.dark) .dark\:bg-gray-800 {
+    background-color: #ffffff;
+}
+
+:root:not(.dark) .dark\:bg-gray-900 {
+    background-color: #F9FAFB;
+}
+
+:root:not(.dark) .dark\:text-gray-400 {
+    color: #374151;
+}
+
+/* Dark mode colors - additional */
+.dark body {
+    background-color: #111827 !important;
+}
+
+.dark .bg-gray-800,
+.dark .dark\:bg-gray-800 {
+    background-color: #1F2937 !important;
+}
+
+.dark .bg-gray-900,
+.dark .dark\:bg-gray-900 {
+    background-color: #111827 !important;
+}
+
+.dark #sidebar,
+.dark .sidebar .m-3 {
+    background-color: #1F2937 !important;
+}
+
+.dark .bg-white {
+    background-color: #1F2937 !important;
+}
+
+.dark canvas {
+    background-color: #1F2937 !important;
+}
+
+.dark .shadow-sm {
+    background-color: #1F2937 !important;
+}
+
+/* Memastikan semua card memiliki background gelap */
+.dark [class*="bg-white"],
+.dark [class*="bg-gray-100"] {
+    background-color: #1F2937 !important;
+}
+
+/* Toggle button styles */
+.peer:checked ~ .peer-checked\:bg-blue-500 {
+    background-color: #3B82F6 !important;
+}
+
+.dark .peer:checked ~ .peer-checked\:bg-blue-500 {
+    background-color: #3B82F6 !important;
+}
+
+/* Card shadows untuk dark mode */
+.dark .shadow-sm,
+.dark .shadow-md {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 
+                0 1px 2px -1px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid #374151;
+}
+
+.dark .rounded-xl {
+    border: 1px solid #374151;
+}
+
+/* Card shadows untuk light mode */
+.shadow-sm,
+.shadow-md {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 
+                0 1px 2px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Toggle switch background di mode gelap */
 .dark .bg-gray-200 {
-    background-color: #4a5568;
+    background-color: #4B5563 !important;
 }
 
-.dark .text-gray-900 {
-    color: #ffffff;
-}
-
-.dark .border-gray-300 {
-    border-color: #4a5568;
-}
-
-.dark .hover\:text-gray-600:hover {
-    color: #cbd5e0;
+/* Toggle switch background saat aktif di mode gelap */
+.dark .peer:checked ~ .peer-checked\:after\:border-white {
+    border-color: #ffffff !important;
 } 

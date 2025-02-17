@@ -6,9 +6,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="../styles/sidebar.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
 </head>
-<body class="bg-gray-100 font-sans">
-    <div class="flex min-h-screen bg-gray-100">
+<body class="bg-gray-100 dark:bg-gray-900 font-sans">
+    <div class="flex min-h-screen bg-gray-100 dark:bg-gray-900">
         <!-- Sidebar -->
         <div class="flex-none">
             <?php include '../components/sidebar.php'; ?>
@@ -20,112 +25,112 @@
             <!-- Dashboard -->
             <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <!-- Sensor Cards -->
-                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm text-center">
                     <p class="text-6xl text-blue-500 font-semibold">75<span class="text-2xl">°C</span></p>
                     <div class="flex items-center justify-center mt-2">
                         <i class="fas fa-thermometer-half text-blue-500 mr-2"></i>
-                        <p class="text-gray-500">Suhu Udara</p>
+                        <p class="text-gray-500 dark:text-gray-400">Suhu Udara</p>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm text-center">
                     <p class="text-6xl text-green-500 font-semibold">82<span class="text-2xl">%</span></p>
                     <div class="flex items-center justify-center mt-2">
                         <i class="fas fa-tint text-green-500 mr-2"></i>
-                        <p class="text-gray-500">Kelembapan Udara</p>
+                        <p class="text-gray-500 dark:text-gray-400">Kelembapan Udara</p>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm text-center">
                     <p class="text-6xl text-yellow-500 font-semibold">2850<span class="text-2xl">Lux</span></p>
                     <div class="flex items-center justify-center mt-2">
                         <i class="fas fa-sun text-yellow-500 mr-2"></i>
-                        <p class="text-gray-500">Cahaya</p>
+                        <p class="text-gray-500 dark:text-gray-400">Cahaya</p>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm text-center">
                     <p class="text-6xl text-purple-500 font-semibold">6<span class="text-2xl">%</span></p>
                     <div class="flex items-center justify-center mt-2">
                         <i class="fas fa-water text-purple-500 mr-2"></i>
-                        <p class="text-gray-500">Kelembapan Tanah</p>
+                        <p class="text-gray-500 dark:text-gray-400">Kelembapan Tanah</p>
                     </div>
                 </div>
 
                 <!-- Status Cards -->
-                <div class="bg-white p-2 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-2 rounded-xl shadow-sm text-center">
                     <div class="flex items-center justify-center">
                         <i class="fas fa-thermometer-half text-blue-500 mr-2"></i>
-                        <p class="text-gray-500">Ideal</p>
+                        <p class="text-gray-500 dark:text-gray-400">Ideal</p>
                     </div>
                 </div>
-                <div class="bg-white p-2 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-2 rounded-xl shadow-sm text-center">
                     <div class="flex items-center justify-center">
                         <i class="fas fa-tint text-green-500 mr-2"></i>
-                        <p class="text-gray-500">Ideal</p>
+                        <p class="text-gray-500 dark:text-gray-400">Ideal</p>
                     </div>
                 </div>
-                <div class="bg-white p-2 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-2 rounded-xl shadow-sm text-center">
                     <div class="flex items-center justify-center">
                         <i class="fas fa-sun text-yellow-500 mr-2"></i>
-                        <p class="text-gray-500">Ideal</p>
+                        <p class="text-gray-500 dark:text-gray-400">Ideal</p>
                     </div>
                 </div>
-                <div class="bg-white p-2 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-2 rounded-xl shadow-sm text-center">
                     <div class="flex items-center justify-center">
                         <i class="fas fa-water text-purple-500 mr-2"></i>
-                        <p class="text-gray-500">Ideal</p>
+                        <p class="text-gray-500 dark:text-gray-400">Ideal</p>
                     </div>
                 </div>
 
                 <!-- Control Cards -->
-                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm text-center">
                     <label class="relative inline-flex items-center cursor-pointer justify-center mb-2">
                         <input type="checkbox" class="sr-only peer" checked>
                         <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-500"></div>
                     </label>
-                    <p class="text-gray-500">Fan 1</p>
+                    <p class="text-gray-500 dark:text-gray-400">Fan 1</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm text-center">
                     <label class="relative inline-flex items-center cursor-pointer justify-center mb-2">
                         <input type="checkbox" class="sr-only peer">
                         <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-500"></div>
                     </label>
-                    <p class="text-gray-500">Fan 2</p>
+                    <p class="text-gray-500 dark:text-gray-400">Fan 2</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm text-center">
                     <label class="relative inline-flex items-center cursor-pointer justify-center mb-2">
                         <input type="checkbox" class="sr-only peer" checked>
                         <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-500"></div>
                     </label>
-                    <p class="text-gray-500">Mist Maker</p>
+                    <p class="text-gray-500 dark:text-gray-400">Mist Maker</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm text-center">
                     <label class="relative inline-flex items-center cursor-pointer justify-center mb-2">
                         <input type="checkbox" class="sr-only peer">
                         <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-500"></div>
                     </label>
-                    <p class="text-gray-500">Grow LED</p>
+                    <p class="text-gray-500 dark:text-gray-400">Grow LED</p>
                 </div>
 
                 <!-- Graph Cards -->
-                <div class="bg-white p-4 rounded-xl shadow-sm col-span-2">
-                    <p class="text-gray-500 mb-4">Suhu</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm col-span-2">
+                    <p class="text-gray-500 dark:text-gray-400 mb-4">Suhu</p>
                     <div class="h-64 w-full">
                         <canvas id="tempChart"></canvas>
                     </div>
                 </div>
-                <div class="bg-white p-4 rounded-xl shadow-sm col-span-2">
-                    <p class="text-gray-500 mb-4">Kelembapan</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm col-span-2">
+                    <p class="text-gray-500 dark:text-gray-400 mb-4">Kelembapan</p>
                     <div class="h-64 w-full">
                         <canvas id="humidChart"></canvas>
                     </div>
                 </div>
-                <div class="bg-white p-4 rounded-xl shadow-sm col-span-2">
-                    <p class="text-gray-500 mb-4">Cahaya</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm col-span-2">
+                    <p class="text-gray-500 dark:text-gray-400 mb-4">Cahaya</p>
                     <div class="h-64 w-full">
                         <canvas id="lightChart"></canvas>
                     </div>
                 </div>
-                <div class="bg-white p-4 rounded-xl shadow-sm col-span-2">
-                    <p class="text-gray-500 mb-4">Kelembapan Tanah</p>
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm col-span-2">
+                    <p class="text-gray-500 dark:text-gray-400 mb-4">Kelembapan Tanah</p>
                     <div class="h-64 w-full">
                         <canvas id="soilChart"></canvas>
                     </div>
@@ -151,7 +156,28 @@
                 y: {
                     beginAtZero: true,
                     min: 0,
-                    max: 100
+                    max: 100,
+                    grid: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#374151' : '#E5E7EB'
+                    },
+                    ticks: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#9CA3AF' : '#4B5563'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#374151' : '#E5E7EB'
+                    },
+                    ticks: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#9CA3AF' : '#4B5563'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: localStorage.getItem('theme') === 'dark' ? '#9CA3AF' : '#4B5563'
+                    }
                 }
             }
         };
@@ -205,7 +231,28 @@
                     y: {
                         beginAtZero: true,
                         min: 1000,
-                        max: 10000
+                        max: 10000,
+                        grid: {
+                            color: localStorage.getItem('theme') === 'dark' ? '#374151' : '#E5E7EB'
+                        },
+                        ticks: {
+                            color: localStorage.getItem('theme') === 'dark' ? '#9CA3AF' : '#4B5563'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: localStorage.getItem('theme') === 'dark' ? '#374151' : '#E5E7EB'
+                        },
+                        ticks: {
+                            color: localStorage.getItem('theme') === 'dark' ? '#9CA3AF' : '#4B5563'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: localStorage.getItem('theme') === 'dark' ? '#9CA3AF' : '#4B5563'
+                        }
                     }
                 }
             }
@@ -227,5 +274,8 @@
         });
     </script>
     <script src="../scripts/sidebar.js"></script>
+    <div id="floatingSettings" class="fixed bottom-4 right-4 bg-blue-500 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg cursor-pointer">
+        <i class="fas fa-cog"></i>
+    </div>
 </body>
 </html> 
