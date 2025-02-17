@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f4f6; /* Warna latar belakang netral */
+            font-family: Arial, sans-serif;
+        }
+        .logo {
+            position: relative;
+            margin-bottom: 30px;
+            color: #20c997; /* Warna Hijau Toska */
+            font-size: 6em; /* Sesuaikan ukuran logo */
+        }
+        .welcome-text {
+            font-size: 3em; /* Sesuaikan ukuran teks */
+            color: #20c997; /* Hijau Toska */
+            text-shadow: 3px 3px 6px #08b993; /* Toska Tua */
+            opacity: 0;
+            animation: textEffect 3s forwards;
+        }
+        .loading-dots {
+            font-size: 2.5em;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgb(59, 130, 246); /* Warna biru sesuai dengan index.php */
+            animation: dotEffect 1.5s infinite;
+        }
+        .dot:nth-child(2) {
+            animation-delay: 0.5s;
+            background-color: rgb(34, 197, 94); /* Warna hijau sesuai dengan index.php */
+        }
+        .dot:nth-child(3) {
+            animation-delay: 1s;
+            background-color: rgb(234, 179, 8); /* Warna kuning sesuai dengan index.php */
+        }
+        @keyframes textEffect {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes dotEffect {
+            0%, 20% { transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <i class="fas fa-cloud"></i>
+        <i class="fas fa-sun" style="font-size: 0.7em; position: absolute; top: -20px; left: -20px;"></i>
+    </div>
+    <div class="welcome-text">WSN Monitoring</div>
+    <div class="loading-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+    <script>
+        // Redirect to index.php after 3 seconds
+        setTimeout(() => {
+            window.location.href = "index.php";
+        }, 3000);
+    </script>
+</body>
+</html>
